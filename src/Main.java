@@ -1,5 +1,6 @@
 import java.util.List;
 
+import com.Galanthe;
 import com.logic.utils.pathfinding.algos.AStarFinder;
 import com.logic.utils.pathfinding.algos.JPSFinder;
 import com.logic.utils.pathfinding.dto.ASPoint;
@@ -7,12 +8,17 @@ import com.logic.utils.pathfinding.dto.JPSPoint;
 import com.logic.utils.pathfinding.dto.Path;
 import com.logic.utils.pathfinding.dto.PathPoint;
 import com.logic.utils.pathfinding.interfaces.IPathfinder;
+import com.scenes.BatteSceneTest;
 
 public class Main 
 {
     public static void main(String[] args)
     {
-        try
+        Galanthe game = new Galanthe(null);
+        game.setScene(new BatteSceneTest());
+        game.run();
+
+        /*try
         {
             /*long start = System.currentTimeMillis();
             for(int i = 0; i < 1500; i++)
@@ -21,13 +27,13 @@ public class Main
             }
             long end = System.currentTimeMillis();
             System.out.println("Total : " + (end-start) + " AVG:" + (end-start)/1500);*/
-
+        /*
             smallRun();
         }
         catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private static void run() throws Exception

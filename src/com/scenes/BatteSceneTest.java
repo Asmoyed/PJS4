@@ -1,4 +1,19 @@
 package com.scenes;
 
-public class BatteSceneTest {
+
+import nivalis.engine.transform.Camera;
+import nivalis.utils.scene.Scene;
+
+public class BatteSceneTest implements Scene {
+
+
+    @Override
+    public void preprocess() {
+
+    }
+
+    @Override
+    public void gameLoop(Camera camera) {
+
+    }
 }
