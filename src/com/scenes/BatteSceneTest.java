@@ -6,6 +6,8 @@ import nivalis.utils.scene.Scene;
 
 public class BatteSceneTest implements Scene {
 
+    Character ally;
+    Character ennemy;
 
     @Override
     public void preprocess() {

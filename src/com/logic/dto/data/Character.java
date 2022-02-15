@@ -1,6 +1,9 @@
 package com.logic.dto.data;
 
-public class Character extends DynamicEntity
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class Character extends DynamicEntity implements Serializable
 {
     // Attributs
 
