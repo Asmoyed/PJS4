@@ -20,7 +20,7 @@ public class Character extends DynamicEntity implements Serializable
 
     // Constructeurs
 
-    public Character(int x, int y, Direction direction, String name, String secondName, String description, CharacterState state, Allegiance allegiance, Weapon weapon, CharacterClass characterClass, ElementType element, Stats stats)
+    public Character(int x, int y, Direction direction, String name, String secondName, String description, CharacterState state, Allegiance allegiance/*, Weapon weapon*/, CharacterClass characterClass, Stats stats)
     {
         super(x,y,direction);
         this.name = name;
@@ -28,9 +28,8 @@ public class Character extends DynamicEntity implements Serializable
         this.description = description;
         this.state = state;
         this.allegiance = allegiance;
-        this.weapon = weapon;
+        //this.weapon = weapon;
         this.characterClass = characterClass;
-        this.element = element;
         this.stats = stats;
     }
 
