@@ -1,6 +1,9 @@
 import java.util.List;
 
 import com.Galanthe;
+import com.logic.dto.Serializer;
+import com.logic.dto.data.*;
+import com.logic.dto.data.Character;
 import com.logic.utils.pathfinding.algos.AStarFinder;
 import com.logic.utils.pathfinding.algos.JPSFinder;
 import com.logic.utils.pathfinding.dto.ASPoint;
@@ -14,9 +17,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Galanthe game = new Galanthe(null);
+        Character ardyn = new Character(0,0, Direction.NORTH, "Ardyn", "Perlegrand", "Un jeune soldat plein d'ambition", CharacterState.ALIVE, Allegiance.J1, new CharacterClass(5,0.5f,0.5f,0.5f,0.4f), new Stats(20,20,8,5,7,0,100));
+        Serializer serializer = new Serializer();
+        serializer.serialize(ardyn, "./localdata/saves/test/ardyn.json");
+        /*Galanthe game = new Galanthe(null);
         game.setScene(new BatteSceneTest());
-        game.run();
+        game.run();*/
 
         /*try
         {

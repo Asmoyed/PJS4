@@ -112,25 +112,9 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
     {
         this.character.setName(name);
     }
-    public void setLuck(int luck) 
-    {
-        this.character.getStats().setLuck(luck);
-    }
-    public void setTalent(int talent) 
-    {
-        this.character.getStats().setTalent(talent);
-    }
     public void setSpeed(int speed) 
     {
         this.character.getStats().setSpeed(speed);
-    }
-    public void setResistance(int resistance) 
-    {
-        this.character.getStats().setResistance(resistance);
-    }
-    public void setMagic(int magic) 
-    {
-        this.character.getStats().setMagic(magic);
     }
     public void setDefence(int defence) 
     {
@@ -226,10 +210,6 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
             this.health = this.character.getStats().getHealth();
             this.strength = this.character.getStats().getStrength();
             this.defence = this.character.getStats().getDefence();
-            this.magic = this.character.getStats().getMagic();
-            this.resistance = this.character.getStats().getResistance();
-            this.talent = this.character.getStats().getTalent();
-            this.luck = this.character.getStats().getLuck();
             this.maxHealth = this.character.getStats().getMaxHealth();
             this.speed = this.character.getStats().getSpeed();
 

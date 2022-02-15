@@ -8,23 +8,18 @@ public class CharacterClass
     private float healthMultiplier;
     private float strengthMultiplier;
     private float defenceMultiplier;
-    private float magicMultiplier;
-    private float resistanceMultiplier;
-    private float talentMultiplier;
-    private float luckMultiplier;
+    private float speedMultiplier;
 
     // Constructeur
 
-    public CharacterClass(int movementPoint, float healthMultiplier, float strengthMultiplier, float defenceMultiplier, float magicMultiplier, float resistanceMultiplier, float talentMultiplier, float luckMultiplier) 
+    public CharacterClass(int movementPoint, float healthMultiplier, float strengthMultiplier, float defenceMultiplier, float speedMultiplier)
     {
         this.movementPoint = movementPoint;
         this.healthMultiplier = healthMultiplier;
         this.strengthMultiplier = strengthMultiplier;
         this.defenceMultiplier = defenceMultiplier;
-        this.magicMultiplier = magicMultiplier;
-        this.resistanceMultiplier = resistanceMultiplier;
-        this.talentMultiplier = talentMultiplier;
-        this.luckMultiplier = luckMultiplier;
+        this.speedMultiplier = speedMultiplier;
+
     }
 
     // Getter et Setter
@@ -38,41 +33,15 @@ public class CharacterClass
         this.movementPoint = movementPoint;
     }
 
-    public float getLuckMultiplier() 
+    public float getSpeedMultiplier()
     {
-        return luckMultiplier;
+        return speedMultiplier;
     }
-    public void setLuckMultiplier(float luckMultiplier) 
+    public void setSpeedMultiplier(float luckMultiplier)
     {
-        this.luckMultiplier = luckMultiplier;
-    }
-
-    public float getTalentMultiplier() 
-    {
-        return talentMultiplier;
-    }
-    public void setTalentMultiplier(float talentMultiplier) 
-    {
-        this.talentMultiplier = talentMultiplier;
+        this.speedMultiplier = luckMultiplier;
     }
 
-    public float getResistanceMultiplier() 
-    {
-        return resistanceMultiplier;
-    }
-    public void setResistanceMultiplier(float resistanceMultiplier) 
-    {
-        this.resistanceMultiplier = resistanceMultiplier;
-    }
-
-    public float getMagicMultiplier() 
-    {
-        return magicMultiplier;
-    }
-    public void setMagicMultiplier(float magicMultiplier) 
-    {
-        this.magicMultiplier = magicMultiplier;
-    }
 
     public float getDefenceMultiplier() 
     {
