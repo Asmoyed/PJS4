@@ -1,20 +1,6 @@
 package com.logic.dto.data;
 
-import com.logic.utils.observer.Observable;
-import com.logic.utils.observer.Observer;
-import nivalis.engine.controls.KeyListener;
-import nivalis.engine.transform.Transform;
-import nivalis.utils.animation.Animation;
-import nivalis.utils.eventHandling.Update;
-import org.joml.Matrix4f;
-
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_Z;
-
-public class Character extends DynamicEntity implements Update, Observer
+public class Character extends DynamicEntity
 {
     // Attributs
 
@@ -30,7 +16,8 @@ public class Character extends DynamicEntity implements Update, Observer
     private Stats stats;
 
 
-    private Animation animation;
+
+
 
     // Constructeurs
 
@@ -121,34 +108,8 @@ public class Character extends DynamicEntity implements Update, Observer
     {
         this.stats = stats;
     }
-    public void setAnimation(Animation animation) {this.animation = animation;}
-    public Animation getAnimation() {return animation;}
 
-    @Override
-    public void update(Matrix4f matrix4f) {
-        if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
-            setY(getY() + 1);
-            System.out.println("Z pressed");
-        }
-        animation.render(new Transform(getX(), getY()).getProjection(matrix4f));
 
-    }
 
-    @Override
-    public void sub(Observable source) {
-        source.addSub(this);
-    }
 
-    @Override
-    public void unsub(Observable source) {
-        source.removeSub(this);
-    }
-
-    @Override
-    public void update(String message) {
-        if (message == "up") {
-            System.out.println("Message received !");
-
-        }
-    }
 }

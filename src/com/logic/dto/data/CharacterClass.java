@@ -5,6 +5,7 @@ public class CharacterClass
     // Attributs
 
     private int movementPoint;
+    private int maxMovementPoint;
     private float healthMultiplier;
     private float strengthMultiplier;
     private float defenceMultiplier;
@@ -32,6 +33,9 @@ public class CharacterClass
     {
         this.movementPoint = movementPoint;
     }
+
+    public int getMaxMovementPoint() {return maxMovementPoint;}
+    public void setMaxMovementPoint(int movementPoint) {this.maxMovementPoint = movementPoint;}
 
     public float getSpeedMultiplier()
     {
