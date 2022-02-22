@@ -8,10 +8,6 @@ public class Skill
     private float healthMultiplier;
     private float strengthMultiplier;
     private float defenceMultiplier;
-    private float magicMultiplier;
-    private float resistanceMultiplier;
-    private float talentMultiplier;
-    private float luckMultiplier;
     private float maxHealthMultiplier;
     private float speedMultiplier;
 
@@ -23,10 +19,6 @@ public class Skill
         this.healthMultiplier = healthMultiplier;
         this.strengthMultiplier = strengthMultiplier;
         this.defenceMultiplier = defenceMultiplier;
-        this.magicMultiplier = magicMultiplier;
-        this.resistanceMultiplier = resistanceMultiplier;
-        this.talentMultiplier = talentMultiplier;
-        this.luckMultiplier = luckMultiplier;
         this.healthMultiplier = healthMultiplier;
         this.speedMultiplier = speedMultiplier;
     }
@@ -58,45 +50,6 @@ public class Skill
         this.maxHealthMultiplier = maxHealthMultiplier;
     }
 
-    public float getLuckMultiplier() 
-    {
-        return luckMultiplier;
-    }
-
-    public void setLuckMultiplier(float luckMultiplier) 
-    {
-        this.luckMultiplier = luckMultiplier;
-    }
-
-    public float getTalentMultiplier() 
-    {
-        return talentMultiplier;
-    }
-
-    public void setTalentMultiplier(float talentMultiplier) 
-    {
-        this.talentMultiplier = talentMultiplier;
-    }
-
-    public float getResistanceMultiplier() 
-    {
-        return resistanceMultiplier;
-    }
-
-    public void setResistanceMultiplier(float resistanceMultiplier) 
-    {
-        this.resistanceMultiplier = resistanceMultiplier;
-    }
-
-    public float getMagicMultiplier() 
-    {
-        return magicMultiplier;
-    }
-
-    public void setMagicMultiplier(float magicMultiplier) 
-    {
-        this.magicMultiplier = magicMultiplier;
-    }
 
     public float getDefenceMultiplier() 
     {

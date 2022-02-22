@@ -10,6 +10,9 @@ public class Stats
     private int xp;
     private int maxXp;
 
+    public Stats() {
+    }
+
     public Stats(int health, int maxHealth, int strength, int defence, int speed, int xp, int maxXp)
     {
         this.health = health;
@@ -28,6 +31,10 @@ public class Stats
 
     public void setHealth(int health)
     {
+        if(health < 0) {
+            this.health = 0;
+            return;
+        }
         this.health = health;
     }
 
@@ -38,6 +45,10 @@ public class Stats
 
     public void setMaxHealth(int maxHealth)
     {
+        if(maxHealth < 0) {
+            this.maxHealth = 0;
+            return;
+        }
         this.maxHealth = maxHealth;
     }
 
@@ -83,5 +94,18 @@ public class Stats
 
     public void setMaxXp(int maxXp) {
         this.maxXp = maxXp;
+    }
+
+    @Override
+    public String toString() {
+        return "Stats{" +
+                "health=" + health +
+                ", maxHealth=" + maxHealth +
+                ", strength=" + strength +
+                ", defence=" + defence +
+                ", speed=" + speed +
+                ", xp=" + xp +
+                ", maxXp=" + maxXp +
+                '}';
     }
 }
