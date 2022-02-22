@@ -13,15 +13,27 @@ public class PathPoint
         this.walkable = wakable;
     }
 
+    /**
+     * Permet de savoir si une case est traversable ou non.
+     * @return L'état d'une case.
+     */
+
     public boolean isWalkable()
     {
         return walkable;
     }
 
+    /**
+     * Définit l'état d'une case
+     * @param walkable, un état définissant si une case est traversable ou non.
+     */
+
     public void setWalkable(boolean walkable)
     {
         this.walkable = walkable;
     }
+
+
 
     public int getX()
     {

@@ -1,5 +1,9 @@
 package com.logic.renderedData;
 
+import com.logic.utils.pathfinding.algos.AStarFinder;
+import com.logic.utils.pathfinding.dto.ASPoint;
+import com.logic.utils.pathfinding.exception.TargetUnreachableException;
+import com.logic.utils.pathfinding.render.PathRenderer;
 import nivalis.engine.controls.KeyListener;
 import nivalis.engine.transform.Transform;
 import nivalis.engine.util.Time;
@@ -17,12 +21,14 @@ public class RenderedCharacter implements Update {
     private double secondTime;
     private double elapsedTime;
     private boolean canMove;
+    private AStarFinder map;
 
-    public RenderedCharacter(Character character, Animation animation) {
+    public RenderedCharacter(Character character, Animation animation, AStarFinder map) {
         this.character = character;
         this.animation = animation;
         time = Time.getTime();
         canMove = true;
+        this.map = map;
     }
 
 
@@ -57,6 +63,13 @@ public class RenderedCharacter implements Update {
                 canMove = false;
                 reduceMP();
                 time = Time.getTime();
+            }
+            if (KeyListener.isKeyPressed(GLFW_KEY_SPACE)) {
+                try {
+                    PathRenderer.render(map.calculatePath(new ASPoint(character.getX(), character.getY(), true), new ASPoint(4,3,true),90), matrix4f);
+                } catch (TargetUnreachableException e) {
+                    e.printStackTrace();
+                }
             }
         }
         else {
