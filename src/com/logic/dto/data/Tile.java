@@ -1,14 +1,15 @@
 package com.logic.dto.data;
 
-public class Tile 
+public class Tile extends StaticEntity
 {
     private float defenseMultiplier;
     private float healingMultiplier;
     private float luckMultiplier;
     private Accesibility accesibility;
 
-    public Tile(float defenseMultiplier, float healingMultiplier, float luckMultiplier, Accesibility accesibility) 
+    public Tile(int x, int y, float defenseMultiplier, float healingMultiplier, float luckMultiplier, Accesibility accesibility)
     {
+        super(x, y);
         this.defenseMultiplier = defenseMultiplier;
         this.healingMultiplier = healingMultiplier;
         this.luckMultiplier = luckMultiplier;
