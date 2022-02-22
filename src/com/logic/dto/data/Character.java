@@ -12,16 +12,16 @@ public class Character extends DynamicEntity
     private Allegiance allegiance;
     private Weapon weapon;
     private CharacterClass characterClass;
-    private ElementType element;
     private Stats stats;
-
-
-
-
 
     // Constructeurs
 
-    public Character(int x, int y, Direction direction, String name, String secondName, String description, CharacterState state, Allegiance allegiance/*, Weapon weapon*/, CharacterClass characterClass, Stats stats)
+
+    public Character(int x, int y, Direction direction) {
+        super(x, y, direction);
+    }
+
+    public Character(int x, int y, Direction direction, String name, String secondName, String description, CharacterState state, Allegiance allegiance, Weapon weapon, CharacterClass characterClass, Stats stats)
     {
         super(x,y,direction);
         this.name = name;
@@ -29,7 +29,7 @@ public class Character extends DynamicEntity
         this.description = description;
         this.state = state;
         this.allegiance = allegiance;
-        //this.weapon = weapon;
+        this.weapon = weapon;
         this.characterClass = characterClass;
         this.stats = stats;
     }
@@ -40,14 +40,7 @@ public class Character extends DynamicEntity
     {
         return name;
     }
-    public ElementType getElement() 
-    {
-        return element;
-    }
-    public void setElement(ElementType element) 
-    {
-        this.element = element;
-    }
+
     public CharacterClass getCharacterClass() 
     {
         return characterClass;
@@ -109,7 +102,64 @@ public class Character extends DynamicEntity
         this.stats = stats;
     }
 
+    // Formules
+
+    public void attack(Character ennemy) {
+        ennemy.getStats().setHealth(ennemy.getStats().getHealth() - this.damageValue(ennemy));
+    }
+
+    public int damageValue(Character victim) {
+
+        // à revoir les coeffs
+        double coefWeapon = 1.;
+        double coefElem = 1.;
+        if(!(getWeapon().isRanged()) && !(victim.getWeapon().isRanged())) {
+            if(getWeapon().getWeaponType() == WeaponType.SWORD && victim.getWeapon().getWeaponType() == WeaponType.AXE)
+                coefWeapon = 1.5;
+            if(getWeapon().getWeaponType() == WeaponType.AXE && victim.getWeapon().getWeaponType() == WeaponType.LANCE)
+                coefWeapon = 1.5;
+            if(getWeapon().getWeaponType() == WeaponType.LANCE && victim.getWeapon().getWeaponType() == WeaponType.SWORD)
+                coefWeapon = 1.5;
+        }
+        if(getWeapon().isRanged() && victim.getWeapon().isRanged()) {
+            if(getWeapon().getWeaponType() == WeaponType.THROWABLE && victim.getWeapon().getWeaponType() == WeaponType.GUN)
+                coefWeapon = 1.5;
+            if(getWeapon().getWeaponType() == WeaponType.GUN && victim.getWeapon().getWeaponType() == WeaponType.BOW)
+                coefWeapon = 1.5;
+            if(getWeapon().getWeaponType() == WeaponType.BOW && victim.getWeapon().getWeaponType() == WeaponType.THROWABLE)
+                coefWeapon = 1.5;
+        }
 
 
+        if(getWeapon().getElement() == ElementType.AQUA && victim.getWeapon().getElement() == ElementType.FIRE)
+            coefElem = 1.5;
+        if(getWeapon().getElement() == ElementType.EARTH && victim.getWeapon().getElement() == ElementType.LIGHTNING)
+            coefElem = 1.5;
+        if(getWeapon().getElement() == ElementType.AIR && victim.getWeapon().getElement() == ElementType.EARTH)
+            coefElem = 1.5;
+        if(getWeapon().getElement() == ElementType.FIRE && victim.getWeapon().getElement() == ElementType.AIR)
+            coefElem = 1.5;
+        if(getWeapon().getElement() == ElementType.LIGHTNING && victim.getWeapon().getElement() == ElementType.AIR)
+            coefElem = 1.5;
 
+        if ((int) Math.floor((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem) < 0)
+            return 0;
+        return (int) Math.floor((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem);
+    }
+
+    public int healValue() {
+        // à revoir avec les skills
+        return getWeapon().getDamage();
+    }
+
+    public void heal(Character victim) {
+        victim.getStats().setHealth(victim.getStats().getHealth() + healValue());
+    }
+
+    public void speedAdvantage(Character ennemy) {
+        if(getStats().getSpeed() > 5)
+            getStats().setStrength(getStats().getStrength() * 2);
+        else if(getStats().getSpeed() < -5)
+            ennemy.getStats().setStrength(ennemy.getStats().getStrength() * 2);
+    }
 }

@@ -1,77 +1,64 @@
 package com.logic.dto.data;
 
-public class CharacterClass 
+public class CharacterClass
 {
     // Attributs
 
     private int movementPoint;
-    private int maxMovementPoint;
     private float healthMultiplier;
     private float strengthMultiplier;
     private float defenceMultiplier;
-    private float speedMultiplier;
 
     // Constructeur
 
-    public CharacterClass(int movementPoint, float healthMultiplier, float strengthMultiplier, float defenceMultiplier, float speedMultiplier)
+
+    public CharacterClass() {
+    }
+
+    public CharacterClass(int movementPoint, float healthMultiplier, float strengthMultiplier, float defenceMultiplier)
     {
         this.movementPoint = movementPoint;
         this.healthMultiplier = healthMultiplier;
         this.strengthMultiplier = strengthMultiplier;
         this.defenceMultiplier = defenceMultiplier;
-        this.speedMultiplier = speedMultiplier;
-
     }
 
     // Getter et Setter
 
-    public int getMovementPoint() 
+    public int getMovementPoint()
     {
         return movementPoint;
     }
-    public void setMovementPoint(int movementPoint) 
+    public void setMovementPoint(int movementPoint)
     {
         this.movementPoint = movementPoint;
     }
 
-    public int getMaxMovementPoint() {return maxMovementPoint;}
-    public void setMaxMovementPoint(int movementPoint) {this.maxMovementPoint = movementPoint;}
-
-    public float getSpeedMultiplier()
-    {
-        return speedMultiplier;
-    }
-    public void setSpeedMultiplier(float luckMultiplier)
-    {
-        this.speedMultiplier = luckMultiplier;
-    }
-
-
-    public float getDefenceMultiplier() 
+    public float getDefenceMultiplier()
     {
         return defenceMultiplier;
     }
-    public void setDefenceMultiplier(float defenceMultiplier) 
+    public void setDefenceMultiplier(float defenceMultiplier)
     {
         this.defenceMultiplier = defenceMultiplier;
     }
 
-    public float getStrengthMultiplier() 
+    public float getStrengthMultiplier()
     {
         return strengthMultiplier;
     }
-    public void setStrengthMultiplier(float strengthMultiplier) 
+    public void setStrengthMultiplier(float strengthMultiplier)
     {
         this.strengthMultiplier = strengthMultiplier;
     }
 
-    public float getHealthMultiplier() 
+    public float getHealthMultiplier()
     {
         return healthMultiplier;
     }
-    public void setHealthMultiplier(float healthMultiplier) 
+    public void setHealthMultiplier(float healthMultiplier)
     {
         this.healthMultiplier = healthMultiplier;
     }
-    
+
 }

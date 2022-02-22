@@ -18,7 +18,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 public class BatteSceneTest implements Scene {
     ASPoint[][] map = new ASPoint[7][5];
 
-    RenderedCharacter ardyn = new RenderedCharacter(new Character(0,0,Direction.NORTH, "Ardyn", "Perlegrand", "Un jeune soldat plein d'ambition",CharacterState.ALIVE, Allegiance.J1, new CharacterClass(5,0.5f,0.5f,0.5f,0.4f), new Stats(20,20,8,5,7,0,100)),null, new AStarFinder(map));
+    RenderedCharacter ardyn = new RenderedCharacter(new Character(0,0,Direction.NORTH, "Ardyn", "Perlegrand", "Un jeune soldat plein d'ambition",CharacterState.ALIVE, Allegiance.J1, new Weapon(0, false, "arme",WeaponType.SWORD, ElementType.LIGHTNING), new CharacterClass(5,0.5f,0.5f,0.5f), new Stats(20,20,8,5,7,0,100)),null, new AStarFinder(map));
 
     @Override
     public void preprocess() {

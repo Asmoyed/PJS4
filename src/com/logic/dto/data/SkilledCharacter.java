@@ -14,10 +14,6 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
     private int health;
     private int strength;
     private int defence;
-    private int magic;
-    private int resistance;
-    private int talent;
-    private int luck;
     private int maxHealth;
     private int speed;
 
@@ -38,11 +34,11 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
     }
     public ElementType getElement() 
     {
-        return this.character.getElement();
+        return this.character.getWeapon().getElement();
     }
     public void setElement(ElementType element) 
     {
-        this.character.setElement(element);
+        this.character.getWeapon().setElement(element);
     }
     public CharacterClass getCharacterClass() 
     {
@@ -112,10 +108,6 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
     {
         this.character.setName(name);
     }
-    public void setSpeed(int speed) 
-    {
-        this.character.getStats().setSpeed(speed);
-    }
     public void setDefence(int defence) 
     {
         this.character.getStats().setDefence(defence);
@@ -135,30 +127,10 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
 
     // Facade avec les skills
 
-    public int getLuck() 
-    {
-        calcStats();
-        return luck;
-    }
-    public int getTalent() 
-    {
-        calcStats();
-        return talent;
-    }
     public int getSpeed() 
     {
         calcStats();
         return speed;
-    }
-    public int getResistance() 
-    {
-        calcStats();
-        return resistance;
-    }
-    public int getMagic() 
-    {
-        calcStats();
-        return magic;
     }
     public int getDefence() 
     {
@@ -218,10 +190,6 @@ public class SkilledCharacter extends DynamicEntity implements NotifyTurn
                 this.health *= s.getHealthMultiplier();
                 this.strength *= s.getStrengthMultiplier();
                 this.defence *= s.getDefenceMultiplier();
-                this.magic *= s.getMagicMultiplier();
-                this.resistance *= s.getResistanceMultiplier();
-                this.talent *= s.getTalentMultiplier();
-                this.luck *= s.getLuckMultiplier();
                 this.maxHealth *= s.getMaxHealthMultiplier();
                 this.speed *= s.getSpeedMultiplier();
             }
