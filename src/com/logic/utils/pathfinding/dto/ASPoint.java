@@ -43,4 +43,18 @@ public class ASPoint extends PathPoint implements Comparable<ASPoint>
     {
         return this.fCost - o.fCost;
     }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (!(o instanceof ASPoint))
+        {
+            return false;
+        }
+        else
+        {
+            ASPoint p = (ASPoint) o;
+            return p.x == this.x && p.y == this.y && p.walkable == this.walkable;
+        }
+    }
 }

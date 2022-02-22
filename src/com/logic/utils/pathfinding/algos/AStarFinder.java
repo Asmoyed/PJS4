@@ -29,18 +29,21 @@ public class AStarFinder implements IPathfinder
         this.target = target;
         this.closed = new boolean[map.length][map[0].length];
 
+
         // Initialise le point de départ
         map[origin.getX()][origin.getY()].setgCost(0);
         map[origin.getX()][origin.getY()].setfCost(origin.distance(target));
 
-        this.open.add((ASPoint) origin);
+        ASPoint originPrime = new ASPoint(origin.getX(), origin.getY(), true);
+        originPrime.setgCost(0);
+        this.open.add(originPrime);
 
         while (!this.open.isEmpty()) // Tant qu'on peux explorer de nouveaux points
         {
             // On récupère le point avec le fCost le plus petit (donc théoriquement le plus proche de la solution)
             ASPoint best = popBestPoint();
 
-            if (best == target) // On a trouvé l'arivée
+            if (best.getX() == target.getX() && best.getY() == target.getY()) // On a trouvé l'arivée
             {
                 return recontructPath(best);
             }
