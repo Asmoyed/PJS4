@@ -6,26 +6,26 @@ import java.util.List;
 public class World 
 {
     private StaticEntity[][] staticEntities;
-    private List<DynamicEntity> dynamicEntities;
+    private List<Character> characters;
 
     public World(StaticEntity[][] staticEntities) 
     {
         this.staticEntities = staticEntities;
-        this.dynamicEntities = new ArrayList<DynamicEntity>();
+        this.characters = new ArrayList<Character>();
     }
     
     public StaticEntity[][] getStaticEntities() 
     {
         return staticEntities;
     }
-    public List<DynamicEntity> getDynamicEntities() 
+    public List<Character> getCharacters()
     {
-        return dynamicEntities;
+        return characters;
     }
 
-    public void setDynamicEntities(List<DynamicEntity> dynamicEntities) 
+    public void setDynamicEntities(List<Character> characters)
     {
-        this.dynamicEntities = dynamicEntities;
+        this.characters = characters;
     }
     public void setStaticEntities(StaticEntity[][] staticEntities) 
     {
