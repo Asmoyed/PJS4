@@ -1,5 +1,7 @@
 package com.logic.battleHelper;
 
+import com.logic.dto.data.Accesibility;
+import com.logic.dto.data.Tile;
 import com.logic.dto.data.World;
 import com.logic.dto.data.Character;
 
@@ -51,8 +53,8 @@ public class Range
         // Calcul
         while (!openX.isEmpty() || !openY.isEmpty())
         {
-            int tempX = openX.getFirst();
-            int tempY = openY.getFirst();
+            int tempX = openX.pop();
+            int tempY = openY.pop();
             int tempDist = distances[tempX][tempY];
 
             if (tempDist > mvPt)
@@ -64,32 +66,41 @@ public class Range
             if (!closed[tempX][tempY])
             {
                 closed[tempX][tempY] = true;
+                rangeMap[tempX][tempY] = true;
 
                 // On ajoute les deux points sur l'axe X
                 for (int i = -1; i <= 1; i = i + 2)
                 {
                     if (tempX+i > 0 && tempX+i <= xSize)
                     {
-                        openX.add(tempX+i);
-                        openY.add(tempY);
-                        distances[tempX+i][tempY] = tempDist+1;
+                        if (((Tile)world.getStaticEntities()[tempX+i][tempY]).getAccesibility() != Accesibility.NONE)
+                        {
+                            // On ajoute le point et on garde sa distance
+                            openX.add(tempX+i);
+                            openY.add(tempY);
+                            distances[tempX+i][tempY] = tempDist+1;
+                        }
                     }
                 }
 
                 // Idem pour les deux points sur l'axe Y
                 for (int i = -1; i <= 1; i = i + 2)
                 {
-                    if (tempY+i > 0 && tempY+i <= ySize)
+                    if (((Tile)world.getStaticEntities()[tempX][tempY+i]).getAccesibility() != Accesibility.NONE)
                     {
-                        // On ajoute le point et on garde sa distance
-                        openX.add(tempX);
-                        openY.add(tempY+i);
-                        distances[tempX][tempY+i] = tempDist+1;
+                        if (tempY+i > 0 && tempY+i <= ySize)
+                        {
+                            // On ajoute le point et on garde sa distance
+                            openX.add(tempX);
+                            openY.add(tempY+i);
+                            distances[tempX][tempY+i] = tempDist+1;
+                        }
                     }
                 }
             }
         }
 
+        rangeMap[character.getX()][character.getY()] = false;
         return rangeMap;
     }
 }
