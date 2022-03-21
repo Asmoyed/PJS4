@@ -40,17 +40,50 @@ public class TestGameplay {
 
     @Test
     public void testDamageWithWeaponAdvantage() {
+        CharacterClass charaClass = new CharacterClass();
+        Stats stats = new Stats(10, 10, 1, 0, 0, 0, 0);
+        Weapon wpS = new Weapon(2, false, "arme",WeaponType.SWORD, ElementType.LIGHTNING);
+        Weapon wpA = new Weapon(2, false, "arme",WeaponType.AXE, ElementType.LIGHTNING);
+        Character c1 = new Character(0, 0, Direction.SOUTH, "nom", "secondNom", "description", CharacterState.ALIVE, Allegiance.J1, wpS, charaClass, stats);
+        Character c2 = new Character(0, 0, Direction.SOUTH, "nom", "secondNom", "description", CharacterState.ALIVE, Allegiance.J1, wpA, charaClass, stats);
+
+        assertEquals(10, c2.getStats().getHealth());
+
+        c1.attack(c2);
+        assertEquals(3, c1.damageValue(c2));
+        assertEquals(7, c2.getStats().getHealth());
     }
 
 
     @Test
     public void testDamageWithElement() {
+        CharacterClass charaClass = new CharacterClass();
+        Stats stats = new Stats(10, 10, 1, 0, 0, 0, 0);
+        Weapon wpA = new Weapon(2, false, "arme",WeaponType.SWORD, ElementType.AQUA);
+        Weapon wpF = new Weapon(2, false, "arme",WeaponType.SWORD, ElementType.FIRE);
+        Character c1 = new Character(0, 0, Direction.SOUTH, "nom", "secondNom", "description", CharacterState.ALIVE, Allegiance.J1, wpA, charaClass, stats);
+        Character c2 = new Character(0, 0, Direction.SOUTH, "nom", "secondNom", "description", CharacterState.ALIVE, Allegiance.J1, wpF, charaClass, stats);
 
+        assertEquals(10, c2.getStats().getHealth());
 
+        c1.attack(c2);
+        assertEquals(3, c1.damageValue(c2));
+        assertEquals(7, c2.getStats().getHealth());
     }
 
     @Test
     public void testHeal() {
+        CharacterClass charaClass = new CharacterClass();
+        Stats stats = new Stats(10, 10, 1, 0, 0, 0, 0);
+        Weapon wp = new Weapon(2, false, "arme",WeaponType.SWORD, ElementType.LIGHTNING);
+        Character c = new Character(0, 0, Direction.SOUTH, "nom", "secondNom", "description", CharacterState.ALIVE, Allegiance.J1, wp, charaClass, stats);
 
+        assertEquals(10, c.getStats().getHealth());
+
+        c.attack(c);
+        assertEquals(3, c.damageValue(c));
+        assertEquals(7, c.getStats().getHealth());
+        c.getStats().setHealth(c.getStats().getHealth() + c.healValue());
+        assertEquals(10, c.getStats().getHealth());
     }
 }

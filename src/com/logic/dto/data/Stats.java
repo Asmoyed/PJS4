@@ -35,6 +35,11 @@ public class Stats
             this.health = 0;
             return;
         }
+
+        if (maxHealth < health) {
+            this.health = maxHealth;
+            return;
+        }
         this.health = health;
     }
 
