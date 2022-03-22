@@ -57,41 +57,14 @@ public class MoveCalculator
             {
                 for (int j = 0; j < terrain[i].length; j++)
                 {
-                    if (mask[i][j]) // Pour eviter d'essayer de se déplacer plus loin que autorisé
+                    if (mask[i][j] && !occupiedMask[i][j]) // On peut s'y déplacer
                     {
-                        if (!occupiedMask[i][j])
-                        {
-
-                        }
+                        moves.add(new Move(c.getX(), c.getY(), i, j, AttackProcessor.canAttack(i,j, c.getAllegiance(), c.getWeapon().isRanged(), world)));
                     }
                 }
             }
         }
 
-        // TODO
-
         return moves;
-    }
-
-    private static boolean canAttack(Character c, int x, int y)
-    {
-        /*if (c.getWeapon().isRanged())
-        {
-
-        }
-
-
-        try
-        {
-
-        }
-        catch (IndexOutOfBoundsException e)
-        {
-
-        }*/
-
-        // TODO IMPLEMENT
-
-        return false;
     }
 }
