@@ -142,9 +142,9 @@ public class Character extends DynamicEntity
         if(getWeapon().getElement() == ElementType.LIGHTNING && victim.getWeapon().getElement() == ElementType.AIR)
             coefElem = 1.5;
 
-        if ((int) Math.floor((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem) < 0)
+        if ((int) Math.round((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem) < 0)
             return 0;
-        return (int) Math.floor((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem);
+        return (int) Math.round((getStats().getStrength() + getWeapon().getDamage() - victim.getStats().getDefence()) * coefWeapon * coefElem);
     }
 
     public int healValue() {
@@ -154,6 +154,7 @@ public class Character extends DynamicEntity
 
     public void heal(Character victim) {
         victim.getStats().setHealth(victim.getStats().getHealth() + healValue());
+        System.out.println(healValue());
     }
 
     public void speedAdvantage(Character ennemy) {

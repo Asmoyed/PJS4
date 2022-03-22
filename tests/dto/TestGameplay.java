@@ -50,8 +50,8 @@ public class TestGameplay {
         assertEquals(10, c2.getStats().getHealth());
 
         c1.attack(c2);
-        assertEquals(3, c1.damageValue(c2));
-        assertEquals(7, c2.getStats().getHealth());
+        assertEquals(5, c1.damageValue(c2));
+        assertEquals(5, c2.getStats().getHealth());
     }
 
 
@@ -67,8 +67,8 @@ public class TestGameplay {
         assertEquals(10, c2.getStats().getHealth());
 
         c1.attack(c2);
-        assertEquals(3, c1.damageValue(c2));
-        assertEquals(7, c2.getStats().getHealth());
+        assertEquals(5, c1.damageValue(c2));
+        assertEquals(5, c2.getStats().getHealth());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class TestGameplay {
         c.attack(c);
         assertEquals(3, c.damageValue(c));
         assertEquals(7, c.getStats().getHealth());
-        c.getStats().setHealth(c.getStats().getHealth() + c.healValue());
-        assertEquals(10, c.getStats().getHealth());
+        c.heal(c);
+        assertEquals(9, c.getStats().getHealth());
     }
 }
