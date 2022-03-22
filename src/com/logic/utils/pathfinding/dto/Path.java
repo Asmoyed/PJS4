@@ -42,6 +42,17 @@ public class Path
     public List<PathPoint> getList()
     {
         // TODO Remove this
-        return this.points;
+        return points;
+    }
+
+    public String toString() {
+        String s = " {";
+        boolean first = false;
+        for (int i = 0; i < points.size(); i++) {
+            if (!first) { s += points.get(i).toString(); first = true;  }
+            else s += " ; " + points.get(i).toString();
+        }
+        s+= "}";
+        return s;
     }
 }

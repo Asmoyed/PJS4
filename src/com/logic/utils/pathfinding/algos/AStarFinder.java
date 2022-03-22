@@ -10,6 +10,7 @@ import java.util.*;
 
 public class AStarFinder implements IPathfinder
 {
+    private ASPoint[][] originalMap;
     private ASPoint[][] map;
     private PathPoint target;
     private List<ASPoint> open;
@@ -18,81 +19,65 @@ public class AStarFinder implements IPathfinder
 
     public AStarFinder(ASPoint[][] map)
     {
-        this.open = new LinkedList<ASPoint>();
-        this.cameFrom = new HashMap<ASPoint, ASPoint>();
-        this.map = map;
+        this.originalMap = map;
     }
 
     @Override
     public Path calculatePath(PathPoint origin, PathPoint target, int maxCost) throws TargetUnreachableException
     {
-        this.target = target;
-        this.closed = new boolean[map.length][map[0].length];
-
-
-        // Initialise le point de départ
-        map[origin.getX()][origin.getY()].setgCost(0);
-        map[origin.getX()][origin.getY()].setfCost(origin.distance(target));
-
-        ASPoint originPrime = new ASPoint(origin.getX(), origin.getY(), true);
-        originPrime.setgCost(0);
-        this.open.add(originPrime);
-
-        while (!this.open.isEmpty()) // Tant qu'on peux explorer de nouveaux points
+        synchronized (this) // Neccesaire
         {
-            // On récupère le point avec le fCost le plus petit (donc théoriquement le plus proche de la solution)
-            ASPoint best = popBestPoint();
+            this.map = new ASPoint[originalMap.length][originalMap[0].length];
 
-            if (best.getX() == target.getX() && best.getY() == target.getY()) // On a trouvé l'arivée
+            for (int i = 0; i < this.map.length; i++)
             {
-                return recontructPath(best);
-            }
-
-            if (best.getgCost() >= maxCost) // Si le point le plus "proche" est déja trop loin du départ alors ca ne sert a rien de chercher plus
-            {
-                throw new TargetUnreachableException("Pas assez de points de mouvements !");
-            }
-
-            // Sinon on regarde autour
-            neighbor(best);
-
-            /*try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            for (ASPoint[] points : map)
-            {
-                for (ASPoint p : points)
+                for (int j = 0; j < this.map[0].length; j++)
                 {
-                    if (p.isWalkable())
+                    if (this.originalMap[i][j] == null)
                     {
-                        System.out.print(" .");
+                        System.out.println("caca");
+                    }
 
-                        if (closed[p.getX()][p.getY()])
-                        {
-                            System.out.print("/.");
-                        }
-                        else
-                        {
-                            System.out.print("/X");
-                        }
-                    }
-                    else
-                    {
-                        System.out.print(" ---");
-                    }
+                    this.map[i][j] = new ASPoint(i, j, this.originalMap[i][j].isWalkable());
+                }
+            }
+
+
+            this.target = target;
+            this.closed = new boolean[map.length][map[0].length];
+
+            this.open = new LinkedList<ASPoint>();
+            this.cameFrom = new HashMap<ASPoint, ASPoint>();
+
+            // Initialise le point de départ
+            map[origin.getX()][origin.getY()].setgCost(0);
+            map[origin.getX()][origin.getY()].setfCost(origin.distance(target));
+
+            ASPoint originPrime = new ASPoint(origin.getX(), origin.getY(), true);
+            originPrime.setgCost(0);
+            this.open.add(originPrime);
+
+            while (!this.open.isEmpty()) // Tant qu'on peux explorer de nouveaux points
+            {
+                // On récupère le point avec le fCost le plus petit (donc théoriquement le plus proche de la solution)
+                ASPoint best = popBestPoint();
+
+                if (best.getX() == target.getX() && best.getY() == target.getY()) // On a trouvé l'arivée
+                {
+                    return recontructPath(best);
                 }
 
-                System.out.println("");
-            }
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");*/
-        }
+                if (best.getgCost() >= maxCost) // Si le point le plus "proche" est déja trop loin du départ alors ca ne sert a rien de chercher plus
+                {
+                    throw new TargetUnreachableException("Pas assez de points de mouvements !");
+                }
 
-        throw new TargetUnreachableException("Aucun chemin !");
+                // Sinon on regarde autour
+                neighbor(best);
+            }
+
+            throw new TargetUnreachableException("Aucun chemin !");
+        }
     }
 
     /**
