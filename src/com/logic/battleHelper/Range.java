@@ -86,9 +86,9 @@ public class Range
                 // Idem pour les deux points sur l'axe Y
                 for (int i = -1; i <= 1; i = i + 2)
                 {
-                    if (((Tile)world.getStaticEntities()[tempX][tempY+i]).getAccesibility() != Accesibility.NONE)
+                    if (tempY+i > 0 && tempY+i <= ySize)
                     {
-                        if (tempY+i > 0 && tempY+i <= ySize)
+                        if (((Tile)world.getStaticEntities()[tempX][tempY+i]).getAccesibility() != Accesibility.NONE)
                         {
                             // On ajoute le point et on garde sa distance
                             openX.add(tempX);
