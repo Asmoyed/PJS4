@@ -54,4 +54,9 @@ public class PathPoint
     {
         return (int)Math.floor(Math.sqrt((this.x - p.x)^2 + (this.y - p.y)^2));
     }
+
+    public String toString() {
+        String s = x + ":" + y;
+        return s;
+    }
 }

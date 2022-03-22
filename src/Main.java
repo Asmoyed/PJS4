@@ -1,13 +1,6 @@
 import java.util.List;
 
 import com.Galanthe;
-import com.logic.dto.serialization.Serializer;
-import com.logic.dto.data.*;
-import com.logic.dto.data.Character;
-import com.logic.utils.pathfinding.algos.AStarFinder;
-import com.logic.utils.pathfinding.algos.JPSFinder;
-import com.logic.utils.pathfinding.dto.ASPoint;
-import com.logic.utils.pathfinding.dto.JPSPoint;
 import com.logic.utils.pathfinding.dto.Path;
 import com.logic.utils.pathfinding.dto.PathPoint;
 import com.logic.utils.pathfinding.interfaces.IPathfinder;
@@ -21,7 +14,7 @@ public class Main
         Serializer serializer = new Serializer();
         serializer.serialize(ardyn, "./localdata/saves/test/ardyn.json");*/
         Galanthe game = new Galanthe(null);
-        game.setScene(new BatteSceneTest());
+        game.setScene(new BatteSceneTest(game));
         game.run();
 
         /*try
@@ -42,7 +35,7 @@ public class Main
         }*/
     }
 
-    private static void run() throws Exception
+    /*private static void run() throws Exception
     {
         PathPoint[][] map = new PathPoint[15][15];
 
@@ -122,5 +115,5 @@ public class Main
         Path r = finder.calculatePath(map[4][0], map[0][0], 100);
         long end = System.currentTimeMillis();
         System.out.println("Time needed : " + (end-start) + "ms");
-    }
+    }*/
 }
