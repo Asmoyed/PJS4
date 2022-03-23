@@ -1,5 +1,8 @@
 package com.logic.utils.pathfinding.algos;
 
+import com.logic.dto.data.Accesibility;
+import com.logic.dto.data.Tile;
+import com.logic.dto.data.World;
 import com.logic.utils.pathfinding.dto.ASPoint;
 import com.logic.utils.pathfinding.dto.Path;
 import com.logic.utils.pathfinding.dto.PathPoint;
@@ -19,6 +22,21 @@ public class AStarFinder implements IPathfinder
 
     public AStarFinder(ASPoint[][] map)
     {
+        this.originalMap = map;
+    }
+
+    public AStarFinder(World world)
+    {
+        ASPoint[][] map = new ASPoint[world.getStaticEntities().length][world.getStaticEntities()[0].length];
+
+        for (int i = 0; i < world.getStaticEntities().length; i++)
+        {
+            for (int j = 0; j < world.getStaticEntities()[i].length; j++)
+            {
+                map[i][j] = new ASPoint(i, j, ((Tile)world.getStaticEntities()[i][j]).getAccesibility() != Accesibility.NONE);
+            }
+        }
+
         this.originalMap = map;
     }
 
