@@ -59,7 +59,7 @@ public class MoveCalculator
                 {
                     if (mask[i][j] && !occupiedMask[i][j]) // On peut s'y déplacer
                     {
-                        moves.add(new Move(c.getX(), c.getY(), i, j, AttackProcessor.canAttack(i,j, c.getAllegiance(), c.getWeapon().isRanged(), world)));
+                        moves.add(new Move(c.getX(), c.getY(), i, j, AttackProcessor.getResume(i,j, c.getAllegiance(), c.getWeapon().isRanged(), world).getVictims().size() > 0));
                     }
                 }
             }

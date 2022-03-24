@@ -53,7 +53,7 @@ public class AStarFinder implements IPathfinder
                 {
                     if (this.originalMap[i][j] == null)
                     {
-                        System.out.println("caca");
+                        System.out.println("problème");
                     }
 
                     this.map[i][j] = new ASPoint(i, j, this.originalMap[i][j].isWalkable());

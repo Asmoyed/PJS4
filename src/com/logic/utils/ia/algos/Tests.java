@@ -2,7 +2,7 @@ package com.logic.utils.ia.algos;
 
 import com.logic.dto.data.*;
 import com.logic.dto.data.Character;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +12,20 @@ public class Tests
     @Test
     public void test()
     {
-        Weapon weapon1 = new Weapon(5, false, "des", WeaponType.SWORD, ElementType.AIR);
+        Weapon weapon1 = new Weapon(5, true, "des", WeaponType.SWORD, ElementType.AIR);
         Weapon weapon2 = new Weapon(10, true, "des", WeaponType.SWORD, ElementType.AIR);
 
         CharacterClass cc = new CharacterClass(5, 0.5f, 0.5f, 0.5f);
         Character c = new Character(5, 5, Direction.NORTH);
+        c.setStats(new Stats(50,50,10,5,10,10,10));
+        c.setState(CharacterState.ALIVE);
         c.setAllegiance(Allegiance.J1);
         c.setCharacterClass(cc);
         c.setWeapon(weapon1);
 
         Character cPrime = new Character(6, 4, Direction.NORTH);
+        cPrime.setStats(new Stats(50,50,2,5,10,10,10));
+        cPrime.setState(CharacterState.ALIVE);
         cPrime.setAllegiance(Allegiance.J2);
         cPrime.setCharacterClass(cc);
         cPrime.setWeapon(weapon2);
@@ -43,7 +47,6 @@ public class Tests
         World w = new World(tiles);
         w.setDynamicEntities(characters);
 
-        assert(AttackProcessor.canAttack(c, w) == false);
-        assert(AttackProcessor.canAttack(cPrime, w));
+        System.out.println(Evaluator.EvaluatePosition(w, Allegiance.J2));
     }
 }

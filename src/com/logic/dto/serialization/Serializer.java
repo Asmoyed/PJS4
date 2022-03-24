@@ -7,6 +7,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,6 +32,11 @@ public class Serializer
         }
     }
 
+    public static String serialize(Object obj) throws ObjectNotSerializableException, ObjectParsingException
+    {
+        return buildJson(obj).build().toString();
+    }
+
     public static Object deserialize(Class<?> objClass, String path) throws ObjectParsingException
     {
         try
@@ -46,6 +52,28 @@ public class Serializer
         catch (IOException e)
         {
             throw new ObjectParsingException("Erreur IO : " + e.getMessage());
+        }
+        catch (NoSuchMethodException e)
+        {
+            throw new ObjectParsingException("Erreur Syntaxe : Constructeur vide non trouvé pour " + objClass.getName());
+        }
+        catch (Exception e)
+        {
+            throw new ObjectParsingException("Erreur : " + e.getMessage());
+        }
+    }
+
+    public static Object deserializeFromString(Class<?> objClass, String content) throws ObjectParsingException
+    {
+        try
+        {
+            InputStream fis = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
+            JsonObject jObj = Json.createReader(fis).readObject();
+            Object result = objClass.getConstructor().newInstance();
+
+            parseJsonIntoObject(result, jObj);
+
+            return result;
         }
         catch (NoSuchMethodException e)
         {
