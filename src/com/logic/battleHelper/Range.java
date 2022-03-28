@@ -71,7 +71,7 @@ public class Range
                 // On ajoute les deux points sur l'axe X
                 for (int i = -1; i <= 1; i = i + 2)
                 {
-                    if (tempX+i > 0 && tempX+i <= xSize)
+                    if (tempX+i > 0 && tempX+i < xSize)
                     {
                         if (((Tile)world.getStaticEntities()[tempX+i][tempY]).getAccesibility() != Accesibility.NONE)
                         {
@@ -86,7 +86,7 @@ public class Range
                 // Idem pour les deux points sur l'axe Y
                 for (int i = -1; i <= 1; i = i + 2)
                 {
-                    if (tempY+i > 0 && tempY+i <= ySize)
+                    if (tempY+i > 0 && tempY+i < ySize)
                     {
                         if (((Tile)world.getStaticEntities()[tempX][tempY+i]).getAccesibility() != Accesibility.NONE)
                         {

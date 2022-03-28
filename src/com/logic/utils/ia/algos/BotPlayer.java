@@ -3,12 +3,8 @@ package com.logic.utils.ia.algos;
 import com.logic.dto.data.Allegiance;
 import com.logic.dto.data.Character;
 import com.logic.dto.data.World;
-import com.logic.dto.serialization.ObjectNotSerializableException;
-import com.logic.dto.serialization.ObjectParsingException;
-import com.logic.dto.serialization.Serializer;
 import com.logic.utils.ia.dto.Move;
 import com.logic.utils.ia.dto.PositionResume;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -19,11 +15,12 @@ public class BotPlayer
         List<Move> moves = MoveCalculator.generatesMoves(Allegiance.BOT, w);
 
         Move best = null;
-        float maxScore = Float.MAX_VALUE;
+        float maxScore = -Float.MAX_VALUE;
 
         for (Move move : moves)
         {
             float score = Evaluator.EvaluatePosition(executeMove(w, move), Allegiance.BOT);
+            System.out.println(score);
             if (score > maxScore)
             {
                 maxScore = score;
@@ -31,26 +28,17 @@ public class BotPlayer
             }
         }
 
+        if (best == null)
+        {
+            return null;
+        }
+
         return executeMove(w, best);
     }
 
     private static World executeMove(World w, Move m)
     {
-        World copy;
-
-        try
-        {
-            copy = (World) Serializer.deserializeFromString(World.class, Serializer.serialize(w));
-
-            if (copy == null)
-            {
-                throw new Exception();
-            }
-        }
-        catch (Exception e)
-        {
-            throw new RuntimeException("Erreur de sérialisation");
-        }
+        World copy = w.copy();
 
         Character toMove = null;
         for (Character c : copy.getCharacters())

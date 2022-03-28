@@ -16,6 +16,10 @@ public class Character extends DynamicEntity
 
     // Constructeurs
 
+    public Character()
+    {
+        super(-1, -1, null);
+    }
 
     public Character(int x, int y, Direction direction) {
         super(x, y, direction);

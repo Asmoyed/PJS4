@@ -51,6 +51,11 @@ public class Weapon
         return ranged;
     }
 
+    public boolean getRanged()
+    {
+        return ranged;
+    }
+
     public void setRanged(boolean ranged)
     {
         this.ranged = ranged;
