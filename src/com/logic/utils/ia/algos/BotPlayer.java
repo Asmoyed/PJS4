@@ -12,7 +12,12 @@ public class BotPlayer
 {
     public static World play(World w)
     {
-        List<Move> moves = MoveCalculator.generatesMoves(Allegiance.BOT, w);
+        return play(w, Allegiance.BOT);
+    }
+
+    public static World play(World w, Allegiance allegiance)
+    {
+        List<Move> moves = MoveCalculator.generatesMoves(allegiance, w);
 
         Move best = null;
         float maxScore = -Float.MAX_VALUE;
@@ -20,11 +25,51 @@ public class BotPlayer
         for (Move move : moves)
         {
             float score = Evaluator.EvaluatePosition(executeMove(w, move), Allegiance.BOT);
-            System.out.println(score);
             if (score > maxScore)
             {
                 maxScore = score;
                 best = move;
+            }
+        }
+
+        if (best == null)
+        {
+            return null;
+        }
+
+        return executeMove(w, best);
+    }
+
+    /**
+     * Recherche coup le plus avantageux pour une profondeur de 3
+     */
+    public static World advancedPlay(World w, Allegiance allegiance)
+    {
+        List<Move> moves = MoveCalculator.generatesMoves(allegiance, w);
+
+        float maxScore = -Float.MAX_VALUE;
+        Move best = null;
+        for (Move move : moves)
+        {
+            System.out.println("<" + moves.indexOf(move) + "/" + moves.size() + ">");
+
+            World moveWorld = executeMove(w, move);
+            List<Move> moves2 = MoveCalculator.generatesMoves(Allegiance.J1, moveWorld);
+
+            for (Move move2 : moves2)
+            {
+                World move2World = executeMove(moveWorld, move2);
+                List<Move> moves3 = MoveCalculator.generatesMoves(allegiance, move2World);
+
+                for (Move move3 : moves3)
+                {
+                    float score = Evaluator.EvaluatePosition(executeMove(move2World, move3), Allegiance.BOT);
+                    if (score > maxScore)
+                    {
+                        maxScore = score;
+                        best = move;
+                    }
+                }
             }
         }
 
