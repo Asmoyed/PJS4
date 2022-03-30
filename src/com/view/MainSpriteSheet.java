@@ -218,7 +218,215 @@ public class MainSpriteSheet {
             xPos = 6.0f;
             yPos = 5.0f;
         }
+        if (id == MainSpriteEnum.A) {
+            xPos = 0.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.B) {
+            xPos = 1.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.C) {
+            xPos = 2.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.D) {
+            xPos = 3.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.E) {
+            xPos = 4.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.F) {
+            xPos = 5.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.G) {
+            xPos = 6.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.H) {
+            xPos = 7.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.I) {
+            xPos = 8.0f;
+            yPos = 7.0f;
+        }
+        if (id == MainSpriteEnum.J) {
+            xPos = 0.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.K) {
+            xPos = 1.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.L) {
+            xPos = 2.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.M) {
+            xPos = 3.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.N) {
+            xPos = 4.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.O) {
+            xPos = 5.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.P) {
+            xPos = 6.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.Q) {
+            xPos = 7.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.R) {
+            xPos = 8.0f;
+            yPos = 8.0f;
+        }
+        if (id == MainSpriteEnum.S) {
+            xPos = 0.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.T) {
+            xPos = 1.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.U) {
+            xPos = 2.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.V) {
+            xPos = 3.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.W) {
+            xPos = 4.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.X) {
+            xPos = 5.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.Y) {
+            xPos = 6.0f;
+            yPos = 9.0f;
+        }
+        if (id == MainSpriteEnum.Z) {
+            xPos = 7.0f;
+            yPos = 9.0f;
+        }
 
+        if (id == MainSpriteEnum.a) {
+            xPos = 0.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.b) {
+            xPos = 1.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.c) {
+            xPos = 2.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.d) {
+            xPos = 3.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.e) {
+            xPos = 4.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.f) {
+            xPos = 5.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.g) {
+            xPos = 6.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.h) {
+            xPos = 7.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.i) {
+            xPos = 8.0f;
+            yPos = 10.0f;
+        }
+        if (id == MainSpriteEnum.j) {
+            xPos = 0.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.k) {
+            xPos = 1.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.l) {
+            xPos = 2.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.m) {
+            xPos = 3.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.n) {
+            xPos = 4.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.o) {
+            xPos = 5.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.p) {
+            xPos = 6.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.q) {
+            xPos = 7.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.r) {
+            xPos = 8.0f;
+            yPos = 11.0f;
+        }
+        if (id == MainSpriteEnum.s) {
+            xPos = 0.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.t) {
+            xPos = 1.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.u) {
+            xPos = 2.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.v) {
+            xPos = 3.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.w) {
+            xPos = 4.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.x) {
+            xPos = 5.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.y) {
+            xPos = 6.0f;
+            yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.z) {
+            xPos = 7.0f;
+            yPos = 12.0f;
+        }
 
         coordinates = new Vector2f[] {
             new Vector2f(((xPos + 1) * spriteWidth)/ width, ((yPos)* spriteHeight)/ height),

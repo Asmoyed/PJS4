@@ -22,5 +22,7 @@ public enum MainSpriteEnum {
     MOVE,ATTACK,
     KN_I0, KN_I1, KN_I2, KN_I3,KN_I4,KN_I5,KN_I6,
     F_I0, F_I1, F_I2, F_I3, F_I4,F_I5, F_I6,
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
+    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
 
 }
