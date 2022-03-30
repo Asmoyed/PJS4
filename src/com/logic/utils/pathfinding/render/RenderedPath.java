@@ -49,17 +49,18 @@ public class RenderedPath  {
                     renderBatch.addSprite(spriteSheet.getSprite(MainSpriteEnum.STRAIGHT_ARROW, pathPoint.getX(), pathPoint.getY(),90));
                     isStraight = true;
                 }
-                if (path.getList().get(counter +1).getX() - path.getList().get(counter - 1).getX() > 0 && !isStraight) {
-                    int rotation = (path.getList().get(counter + 1).getY() - path.getList().get(counter -1).getY() >0)?0:270;
+
+                if (path.getList().get(counter +1).getX() - path.getList().get(counter - 1).getX() > 0 && pathPoint.getY() == path.getList().get(counter + 1).getY() && !isStraight) {
+                    int rotation = (path.getList().get(counter + 1).getY() - path.getList().get(counter -1).getY() >0)?270:0;
                     renderBatch.addSprite(spriteSheet.getSprite(MainSpriteEnum.TURN_ARROW, pathPoint.getX(), pathPoint.getY(),rotation));
                 }
-                if (path.getList().get(counter +1).getX() - path.getList().get(counter - 1).getX() <= 0 && !isStraight) {
+                if (path.getList().get(counter +1).getX() - path.getList().get(counter - 1).getX() < 0 && pathPoint.getY() == path.getList().get(counter + 1).getY() && !isStraight) {
                     int rotation = (path.getList().get(counter + 1).getY() - path.getList().get(counter -1).getY() >0)?90:180;
                     renderBatch.addSprite(spriteSheet.getSprite(MainSpriteEnum.TURN_ARROW, pathPoint.getX(), pathPoint.getY(),rotation));                }
-                if (path.getList().get(counter +1).getY() - path.getList().get(counter - 1).getY() > 0 && !isStraight) {
-                    int rotation = (path.getList().get(counter + 1).getX() - path.getList().get(counter -1).getX() >0)?0:270;
+                if (path.getList().get(counter +1).getY() - path.getList().get(counter - 1).getY() > 0 && pathPoint.getX() == path.getList().get(counter + 1).getX() && !isStraight) {
+                    int rotation = (path.getList().get(counter + 1).getX() - path.getList().get(counter -1).getX() >0)?0:0;
                     renderBatch.addSprite(spriteSheet.getSprite(MainSpriteEnum.TURN_ARROW, pathPoint.getX(), pathPoint.getY(),rotation));                }
-                if (path.getList().get(counter +1).getY() - path.getList().get(counter - 1).getY() <= 0 && !isStraight) {
+                if (path.getList().get(counter +1).getY() - path.getList().get(counter - 1).getY() < 0  && pathPoint.getX() == path.getList().get(counter + 1).getX()  && !isStraight) {
                     int rotation = (path.getList().get(counter + 1).getX() - path.getList().get(counter -1).getX() >0)?90:180;
                     renderBatch.addSprite(spriteSheet.getSprite(MainSpriteEnum.TURN_ARROW, pathPoint.getX(), pathPoint.getY(),rotation));
                 }

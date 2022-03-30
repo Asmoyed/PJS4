@@ -14,11 +14,11 @@ public class RenderRange {
     }
 
     public void init(Boolean[][] range) {
-
+        renderBatch.clear();
         for (int i = 0; i < range.length; i++) {
             for (int j = 0; j < range[i].length; j++) {
                 if (range[i][j] == true)
-                  renderBatch.addSprite(new Sprite(i,j,new Vector4f(0.0f,0.5f,1.0f,0.2f), 1.0f));
+                  renderBatch.addSprite(new Sprite(i,j,new Vector4f(0.0f,0.5f,1.0f,0.5f), 1.0f));
             }
         }
     }

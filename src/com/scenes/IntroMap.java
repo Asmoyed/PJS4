@@ -27,6 +27,7 @@ import nivalis.tools.game.Scene;
 import nivalis.tools.transform.Camera;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
+import org.lwjgl.glfw.GLFW;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -47,6 +48,7 @@ public class IntroMap implements Scene {
     private RenderedCharacter rCharacter;
     private int lastX;
     private int lastY;
+    private
 
 
     private double time = 0.0f;
@@ -81,8 +83,8 @@ public class IntroMap implements Scene {
         pathRenderer = new RenderedPath();
         rCharacter = new RenderedCharacter(character,5,7,8);
         characters.addSprite(rCharacter.getSprite());
-        lastX = (int) Mouse.getNormX(window.getCamera());
-        lastY = (int) Mouse.getNormY(window.getCamera());
+        lastX =  character.getX();
+        lastY =  character.getY();
 
     }
 
@@ -97,27 +99,33 @@ public class IntroMap implements Scene {
             rangeRenderer.init(Range.getRange(character, data));
             rangeRenderer.render(camera);
             if (Mouse.mouseButtonDown(GLFW_MOUSE_BUTTON_1)) {
-
                  if(Mouse.isDragging()) {
-
-
                      if ((int)Mouse.getNormX(camera) != character.getX() || (int)Mouse.getNormY(camera) != character.getY()) {
-
+                        if ((int) Mouse.getNormX(camera) != lastX || (int) Mouse.getNormY(camera) != lastY)
                          try {
-                             pathRenderer.init(pathfinder.calculatePath(new PathPoint(character.getX(), character.getY(), true), new PathPoint(character.getX() + (int)Mouse.getNormX(camera), character.getY() + (int) Mouse.getNormY(camera), true), character.getCharacterClass().getMovementPoint()));
-                             lastX = (int)Mouse.getNormX(camera);
-                             lastY = (int)Mouse.getNormY(camera);
+                             pathRenderer.init(pathfinder.calculatePath(new PathPoint(character.getX(), character.getY(), true), new PathPoint((int)Mouse.getNormX(camera), (int) Mouse.getNormY(camera), true), character.getCharacterClass().getMovementPoint() + 1));
+
                          } catch (TargetUnreachableException e) {
                              e.printStackTrace();
                          }
-
                      }
-
-
                      pathRenderer.render(camera);
+                     //if (lastX - character.getX() + lastY - character.getY() > character.getCharacterClass().getMovementPoint()) {
+                         lastX = (int)Mouse.getNormX(camera);
+                         lastY = (int)Mouse.getNormY(camera);
+                     //}
+
+
                 }
 
+
+
+            } else if (lastX != character.getX() || lastY != character.getY()) {
+                rCharacter.setPosition(lastX,lastY);
+                System.out.println("deug");
             }
+
+
         }
         characters.render(camera);
     }

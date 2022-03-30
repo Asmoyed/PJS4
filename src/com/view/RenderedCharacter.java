@@ -47,4 +47,11 @@ public class RenderedCharacter {
     public Sprite getSprite() {
         return sprite;
     }
+
+    public void setPosition(int x, int y) {
+        sprite.setCoords(x,y);
+        character.setX(x);
+        character.setY(y);
+
+    }
 }
