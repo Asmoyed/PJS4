@@ -322,7 +322,6 @@ public class MainSpriteSheet {
             xPos = 7.0f;
             yPos = 9.0f;
         }
-
         if (id == MainSpriteEnum.a) {
             xPos = 0.0f;
             yPos = 10.0f;
@@ -426,6 +425,74 @@ public class MainSpriteSheet {
         if (id == MainSpriteEnum.z) {
             xPos = 7.0f;
             yPos = 12.0f;
+        }
+        if (id == MainSpriteEnum.ZERO) {
+            xPos = 0.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.ONE) {
+            xPos = 1.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.TWO) {
+            xPos = 2.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.THREE) {
+            xPos = 3.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.FOUR) {
+            xPos = 4.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.FIVE) {
+            xPos = 5.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.SIX) {
+            xPos = 6.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.SEVEN) {
+            xPos = 7.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.EIGHT) {
+            xPos = 8.0f;
+            yPos = 13.0f;
+        }
+        if (id == MainSpriteEnum.NINE) {
+            xPos = 0.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.PT_INT) {
+            xPos = 1.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.PT_DBL) {
+            xPos = 2.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.VIRG) {
+            xPos = 3.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.PT_EXCL) {
+            xPos = 4.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.PT) {
+            xPos = 5.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.SLASH) {
+            xPos = 6.0f;
+            yPos = 14.0f;
+        }
+        if (id == MainSpriteEnum.PT_VIRG) {
+            xPos = 7.0f;
+            yPos = 14.0f;
         }
 
         coordinates = new Vector2f[] {
