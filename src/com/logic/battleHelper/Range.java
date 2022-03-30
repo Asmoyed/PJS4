@@ -100,7 +100,10 @@ public class Range
             }
         }
 
-        rangeMap[character.getX()][character.getY()] = false;
+        for (Character c : world.getCharacters())
+        {
+            rangeMap[c.getX()][c.getY()] = false;
+        }
         return rangeMap;
     }
 }
