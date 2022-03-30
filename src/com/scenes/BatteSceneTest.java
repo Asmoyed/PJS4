@@ -150,7 +150,7 @@ public class BatteSceneTest implements Scene {
         //this.lastTime = currentTime;
 
         //renderBatch.render(camera);
-        UIRenderer.render(camera);
+
         /*if (Key.isKeyPressed(GLFW_KEY_SPACE)) {
             if (!hasRendered) {
                 rr.init(Range.getRange(ardyn, world));

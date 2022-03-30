@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class UIRenderer {
     private RenderBatch renderBatch;
     private ArrayList<UIElement> elements;
+    private Camera camera;
 
     public UIRenderer() {
         renderBatch = new RenderBatch();
         elements = new ArrayList<>();
+        camera = new Camera(1920,1080);
     }
 
     public void addComponent(UIElement component) {
@@ -23,7 +25,7 @@ public class UIRenderer {
         return elements.get(index);
     }
 
-    public void render(Camera camera) {
+    public void render() {
         renderBatch.render(camera);
     }
 

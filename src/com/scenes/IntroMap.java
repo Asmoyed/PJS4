@@ -25,6 +25,9 @@ import nivalis.tools.controls.Key;
 import nivalis.tools.controls.Mouse;
 import nivalis.tools.game.Scene;
 import nivalis.tools.transform.Camera;
+import nivalis.tools.ui.UIPannel;
+import nivalis.tools.ui.UIRenderer;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 import org.lwjgl.glfw.GLFW;
@@ -48,7 +51,7 @@ public class IntroMap implements Scene {
     private RenderedCharacter rCharacter;
     private int lastX;
     private int lastY;
-    private
+    private UIRenderer ui;
 
 
     private double time = 0.0f;
@@ -85,6 +88,8 @@ public class IntroMap implements Scene {
         characters.addSprite(rCharacter.getSprite());
         lastX =  character.getX();
         lastY =  character.getY();
+        ui = new UIRenderer();
+        ui.addComponent(new UIPannel(new Vector2f(4.8f,-2.0f), new Vector4f(1.0f), 5,4, 1.0f, ui));
 
     }
 
@@ -128,5 +133,6 @@ public class IntroMap implements Scene {
 
         }
         characters.render(camera);
+        ui.render();
     }
 }

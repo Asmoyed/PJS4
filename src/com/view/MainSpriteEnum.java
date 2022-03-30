@@ -21,5 +21,6 @@ public enum MainSpriteEnum {
     TURN_ARROW, END_ARROW,
     MOVE,ATTACK,
     KN_I0, KN_I1, KN_I2, KN_I3,KN_I4,KN_I5,KN_I6,
-    F_I0, F_I1, F_I2, F_I3, F_I4,F_I5, F_I6
+    F_I0, F_I1, F_I2, F_I3, F_I4,F_I5, F_I6,
+
 }
