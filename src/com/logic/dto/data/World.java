@@ -48,7 +48,6 @@ public class World
                 Character copied = (Character) Serializer.deserializeFromString(Character.class, Serializer.serialize(c));
                 copied.setY(c.getY());
                 copied.setX(c.getX());
-                copied.setStats(new Stats(c.getStats().getHealth(), c.getStats().getMaxHealth(), c.getStats().getStrength(), c.getStats().getDefence(), c.getStats().getSpeed(), c.getStats().getXp(), c.getStats().getMaxXp()));
                 characters.add(copied);
             }
             catch (Exception e)
@@ -59,5 +58,9 @@ public class World
 
         copy.characters = characters;
         return copy;
+    }
+
+    public void addCharacter(Character character) {
+        characters.add(character);
     }
 }

@@ -35,8 +35,8 @@ public class Window {
 
     public Window(String name) {
         title = name;
-        width = 900;
-        height = 900;
+        width = 1920;
+        height = 1080;
         isFullscreen = false;
         camera = new Camera(width,height);
     }
@@ -83,7 +83,7 @@ public class Window {
 
     private void loop() {
         GL.createCapabilities();
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.14f, 0.14f, 0.30f, 1.0f);
         Transparent2DContext();
         double frameCap = 1.0 / 60;
         double time = Time.getTime();

@@ -29,4 +29,8 @@ public class Transform {
     public Vector3f getScale () {
         return scale;
     }
+
+    public void setPosition(Vector3f position) {
+        this.position = position;
+    }
 }

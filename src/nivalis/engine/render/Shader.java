@@ -85,6 +85,10 @@ public class Shader {
         }
     }
 
+    public void unbind() {
+        glUseProgram(0);
+    }
+
     /**
      * Get the location and update the value of Integer uniform. It's mainly used to assign a texture to the shader.
      * @param name The name of the uniform.

@@ -12,7 +12,7 @@ public class Camera {
     public Camera(int width, int height) {
         this.position = new Vector3f(0,0,0);
         this.projection = new Matrix4f().ortho2D(-width/2, width/2, -height/2, height/2);
-        this.scaleValue = 64;
+        this.scaleValue = 96;
         this.scale = new Matrix4f().scale(scaleValue);
     }
 
@@ -45,5 +45,21 @@ public class Camera {
     public void dezoom() {
         scaleValue -=1;
         scale = new Matrix4f().scale(scaleValue);
+    }
+
+    public void addX(float x) {
+        position.add(x,0.0f,0.0f);
+    }
+
+    public void addY(float y) {
+        position.add(0.0f,y,0.0f);
+    }
+
+    public float getX() {
+        return position.x;
+    }
+
+    public float getY() {
+        return position.y;
     }
 }

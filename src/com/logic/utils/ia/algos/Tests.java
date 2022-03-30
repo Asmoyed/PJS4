@@ -17,7 +17,7 @@ public class Tests
     public void test()
     {
         World w = newWorld();
-        World result = BotPlayer.advancedPlay(w, Allegiance.BOT);
+        World result = BotPlayer.play(w);
 
         if (result == null)
         {
@@ -27,12 +27,12 @@ public class Tests
         {
             for (Character c : w.getCharacters())
             {
-                System.out.println(c.getX() + "/" + c.getY() + "/" + c.getStats().getHealth() + "/" + c.getAllegiance());
+                System.out.println(c.getX() + "/" + c.getY());
             }
             System.out.println("//");
             for (Character c : result.getCharacters())
             {
-                System.out.println(c.getX() + "/" + c.getY() + "/" + c.getStats().getHealth() + "/" + c.getAllegiance());
+                System.out.println(c.getX() + "/" + c.getY());
             }
         }
     }
@@ -62,7 +62,7 @@ public class Tests
         Weapon weapon1 = new Weapon(5, true, "des", WeaponType.SWORD, ElementType.AIR);
         Weapon weapon2 = new Weapon(10, true, "des", WeaponType.SWORD, ElementType.AIR);
 
-        CharacterClass cc = new CharacterClass(5, 0.5f, 0.5f, 0.5f);
+        CharacterClass cc = new CharacterClass(10, 0.5f, 0.5f, 0.5f);
         Character c = new Character(5, 5, Direction.NORTH);
         c.setStats(new Stats(50,50,10,5,10,10,10));
         c.setState(CharacterState.ALIVE);

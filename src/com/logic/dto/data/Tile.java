@@ -7,6 +7,15 @@ public class Tile extends StaticEntity
     private float luckMultiplier;
     private Accesibility accesibility;
 
+    public Tile(int x, int y) {
+        super(x,y);
+        defenseMultiplier = 0;
+        healingMultiplier = 0;
+        luckMultiplier = 0;
+        accesibility = Accesibility.WALKABLE;
+    }
+
+
     public Tile(int x, int y, float defenseMultiplier, float healingMultiplier, float luckMultiplier, Accesibility accesibility)
     {
         super(x, y);

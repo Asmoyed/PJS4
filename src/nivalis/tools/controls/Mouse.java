@@ -1,10 +1,14 @@
 package nivalis.tools.controls;
 
+import nivalis.tools.transform.Camera;
+
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 public class Mouse {
     private static Mouse instance;
+    private final double SCREEN_WIDTH = 1920;
+    private final double SCREEN_HEIGHT = 1920;
     private double scrollX, scrollY;
     private double xPos, yPos, lastX, lastY;
     private boolean mouseButtonPressed[] = new boolean[3];
@@ -60,6 +64,20 @@ public class Mouse {
     }
 
     public static float getX() { return (float) get().xPos;}
+
+    public static float getNormX(Camera camera) {
+        float offset = camera.getX();
+
+        float width = (float) get().SCREEN_WIDTH;
+        float x = (float)get().xPos;
+
+        return ((x/(width/2)) - 1.0f )* 10.0f;
+    }
+
+    public static float getNormY(Camera camera) {
+
+        return (float) (-((get().yPos)/((get().SCREEN_HEIGHT + camera.getY())/2) -1 + 0.45f ) * 10);
+    }
 
     public static float getY() { return (float) get().yPos;}
 

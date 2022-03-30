@@ -5,6 +5,7 @@ import com.logic.utils.pathfinding.dto.Path;
 import com.logic.utils.pathfinding.dto.PathPoint;
 import com.logic.utils.pathfinding.interfaces.IPathfinder;
 import com.scenes.BatteSceneTest;
+import com.scenes.IntroMap;
 
 public class Main 
 {
@@ -14,7 +15,7 @@ public class Main
         Serializer serializer = new Serializer();
         serializer.serialize(ardyn, "./localdata/saves/test/ardyn.json");*/
         Galanthe game = new Galanthe(null);
-        game.setScene(new BatteSceneTest(game));
+        game.setScene(new IntroMap(game));
         game.run();
 
         /*try
